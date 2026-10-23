@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>هاجر &amp; عبدالله · 2 نوفمبر 2026</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❖</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@400;500;600&display=swap">
+<style>
+:root{
+  --gold:#e8d3b4; --gold-hi:#fbeedb; --cream:#f6ede3; --wine:#4a2224; --paper:#74423e;
+  --line:rgba(255,236,214,.34);
+  --f-ar:'Amiri','Scheherazade New','Traditional Arabic',serif;
+  --f-serif:'Cormorant Garamond',Georgia,serif;
+  --col:min(100vw,520px);
+  --u:calc(var(--col)/100);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden;background:#6f3e3a}
+body{font-family:var(--f-ar);color:var(--cream);-webkit-font-smoothing:antialiased;overscroll-behavior:none}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
+a{color:inherit;text-decoration:none}
+svg.i{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.num{font-feature-settings:'lnum' 1}
+.backdrop{position:fixed;inset:-30px;background:url('cover.png') center/cover no-repeat;filter:blur(38px) brightness(.7);transform:scale(1.1)}
+
+/* ================= الصفحة: ورق واحد متصل بلا فواصل ================= */
+#scroll{position:fixed;inset:0;overflow-y:hidden;overflow-x:hidden;scroll-behavior:smooth;z-index:1}
+#scroll.on{overflow-y:auto}
+.page{position:relative;width:var(--col);margin:0 auto;min-height:100%;overflow:hidden;
+  background:url('paper-tall.jpg') top center/100% auto repeat-y,#74423e}
+/* تدرّج لوني خفيف يطابق لون الورد (أفتح في الأعلى وأعمق في الأسفل) + حبيبات الورق */
+.page::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:linear-gradient(180deg,rgba(255,196,186,.16) 0%,rgba(255,196,186,.05) 22%,rgba(0,0,0,0) 45%,rgba(30,6,8,.14) 100%)}
+.page::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.08;mix-blend-mode:overlay;
+  background:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>")}
+.roses{position:absolute;left:0;width:100%;height:auto;pointer-events:none;z-index:0;display:block}
+.roses.top{top:0}.roses.bottom{bottom:0}
+section{position:relative;z-index:1;text-align:center;padding:0 calc(var(--u)*9)}
+
+.rv{opacity:0;transform:translateY(calc(var(--u)*3));transition:opacity 1s ease var(--d,0s),transform 1s cubic-bezier(.2,.7,.3,1) var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+
+/* ذهب مطبوع بالرقائق */
+.foil{background:linear-gradient(100deg,#d6b583 0%,#fff1da 38%,#e3c593 58%,#c7a06b 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 1px 0 rgba(40,10,12,.35))}
+.divider{display:flex;align-items:center;justify-content:center;gap:calc(var(--u)*2.4);color:var(--gold);margin:calc(var(--u)*5) auto}
+.divider i{display:block;width:calc(var(--u)*20);height:1px;background:linear-gradient(90deg,transparent,rgba(232,211,180,.85))}
+.divider i:last-child{transform:scaleX(-1)}
+.divider svg{font-size:calc(var(--u)*3.4);fill:currentColor;stroke:none}
+
+/* ---------- 1) الصفحة الأولى (ورد من الأعلى) ---------- */
+.hero{padding-top:calc(var(--u)*44);padding-bottom:calc(var(--u)*12);display:flex;flex-direction:column;align-items:center}
+.bismillah{font-family:var(--f-ar);font-weight:700;font-size:calc(var(--u)*6.4);line-height:1.6}
+.mono{width:calc(var(--u)*38);height:calc(var(--u)*38);margin-top:0;filter:drop-shadow(0 calc(var(--u)*.8) calc(var(--u)*1.6) rgba(30,6,8,.4))}
+.names-img{display:block;width:92%;height:auto;margin:calc(var(--u)*5) auto 0;filter:drop-shadow(0 1px 8px rgba(40,10,12,.3))}
+.names-img.sm{width:78%;margin-top:calc(var(--u)*10)}
+.en-date{margin-top:calc(var(--u)*1.5);font-family:var(--f-serif);font-weight:500;font-size:calc(var(--u)*3.6);letter-spacing:.36em;text-indent:.36em;color:var(--gold)}
+
+/* الفيديو كصورة مطبوعة ملصوقة بشريط */
+.vcard{position:relative;width:100%;margin-top:calc(var(--u)*11);padding:calc(var(--u)*2.6) calc(var(--u)*2.6) calc(var(--u)*7);
+  background:#f4eadb;border-radius:calc(var(--u)*.5);transform:rotate(-1.3deg);
+  box-shadow:0 calc(var(--u)*2) calc(var(--u)*5) rgba(30,6,8,.45),0 1px 2px rgba(30,6,8,.4)}
+.vcard .scr{position:relative;aspect-ratio:16/9;overflow:hidden;background:#1c1416}
+.vcard video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.tape{position:absolute;top:calc(var(--u)*-3);width:calc(var(--u)*22);height:calc(var(--u)*7);background:rgba(226,200,176,.62);
+  box-shadow:0 1px 3px rgba(30,6,8,.25);backdrop-filter:blur(1px)}
+.tape.l{left:calc(var(--u)*-4);transform:rotate(-34deg)}
+.tape.r{right:calc(var(--u)*-4);transform:rotate(30deg)}
+.vcard .cap{position:absolute;left:0;right:0;bottom:calc(var(--u)*2);font-family:var(--f-ar);font-size:calc(var(--u)*4);color:#6b3b37}
+.snd{position:fixed;top:calc(env(safe-area-inset-top,0px) + 14px);left:calc(50% - var(--col)/2 + 14px);z-index:30;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-size:19px;
+  background:rgba(60,26,26,.45);border:1px solid rgba(248,240,230,.4);opacity:0;pointer-events:none;transition:opacity .8s}
+.snd.show{opacity:1;pointer-events:auto}.snd .off{display:none}.snd.muted .on{display:none}.snd.muted .off{display:block}
+
+/* ---------- العداد: مستطيلات بنفس لون الخلفية (حفر على الورق) ---------- */
+.cdwrap{padding-top:calc(var(--u)*6);padding-bottom:calc(var(--u)*12)}
+.cdt{font-family:var(--f-ar);font-weight:700;font-size:calc(var(--u)*7.4);line-height:1.6}
+.cds{font-family:var(--f-ar);font-size:calc(var(--u)*5);color:var(--gold);margin-top:calc(var(--u)*.4)}
+.cd{margin-top:calc(var(--u)*7);display:grid;grid-template-columns:repeat(4,1fr);gap:calc(var(--u)*2.2);direction:ltr}
+.cell{padding:calc(var(--u)*5) 0 calc(var(--u)*4);border-radius:calc(var(--u)*.9);
+  background:rgba(58,18,20,.17);border:1px solid rgba(232,211,180,.3);
+  box-shadow:inset 0 calc(var(--u)*.5) calc(var(--u)*1.6) rgba(30,6,8,.32),0 1px 0 rgba(255,225,205,.16)}
+.cell .n{display:block;font-family:var(--f-serif);font-weight:600;font-size:calc(var(--u)*11.5);line-height:1;font-feature-settings:'lnum' 1;font-variant-numeric:lining-nums tabular-nums}
+.cell .l{display:block;margin-top:calc(var(--u)*2.6);font-family:var(--f-ar);font-size:calc(var(--u)*4.6);color:var(--gold)}
+
+/* ---------- نص الدعوة ---------- */
+.inv{padding-top:calc(var(--u)*4);padding-bottom:calc(var(--u)*12)}
+.dua{font-family:var(--f-ar);font-weight:700;font-size:calc(var(--u)*6.8);line-height:1.95}
+.phrase,.closing{font-family:var(--f-ar);font-size:calc(var(--u)*5.8);line-height:1.95;color:var(--cream)}
+.host{font-family:var(--f-ar);font-size:calc(var(--u)*6.2);line-height:1.95;margin-top:calc(var(--u)*7)}
+.host b{display:block;font-weight:700;font-size:calc(var(--u)*8.4);color:var(--gold-hi);margin:calc(var(--u)*.6) 0}
+.host small{display:block;font-size:calc(var(--u)*5.2);opacity:.94}
+.host .pre{display:block;font-size:calc(var(--u)*5.8);color:var(--cream);margin-bottom:calc(var(--u)*1)}
+.host .n1{display:block;margin:0;font-weight:700;font-size:calc(var(--u)*9);line-height:1.5;
+  background:linear-gradient(180deg,#fff3dc 0%,#f0d9b0 55%,#dcbd8a 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.host .hr{display:flex;align-items:center;justify-content:center;gap:calc(var(--u)*3);margin:calc(var(--u)*.4) 0}
+.host .hr i{display:block;width:calc(var(--u)*11);height:1px;background:linear-gradient(90deg,transparent,rgba(232,211,180,.8))}
+.host .hr i:last-child{transform:scaleX(-1)}
+.host .hr em{font-style:normal;font-weight:700;font-size:calc(var(--u)*6.4);color:var(--gold);line-height:1.5}
+.host small{margin-top:calc(var(--u)*1.6)}
+.bride{font-family:var(--f-ar);font-weight:700;font-size:calc(var(--u)*17);line-height:1.5;margin-top:calc(var(--u)*1)}
+.insh{font-family:var(--f-ar);font-size:calc(var(--u)*5.2);color:var(--gold);margin-top:calc(var(--u)*3)}
+
+/* ---------- الموعد والمكان ---------- */
+.det{padding-top:calc(var(--u)*2);padding-bottom:calc(var(--u)*12);padding-left:calc(var(--u)*8);padding-right:calc(var(--u)*8)}
+.h2{font-family:var(--f-ar);font-weight:700;font-size:calc(var(--u)*12);line-height:1.5}
+.sub{font-family:var(--f-ar);font-size:calc(var(--u)*4.6);color:var(--gold);margin-top:calc(var(--u)*.6)}
+.cal{margin-top:calc(var(--u)*7);padding:calc(var(--u)*6) calc(var(--u)*4) calc(var(--u)*4);border-radius:calc(var(--u)*1.2);
+  background:rgba(58,18,20,.14);border:1px solid rgba(232,211,180,.3);box-shadow:inset 0 calc(var(--u)*.5) calc(var(--u)*1.6) rgba(30,6,8,.25)}
+.cal-m{font-family:var(--f-ar);font-weight:700;font-size:calc(var(--u)*10);line-height:1.3}
+.cal-y{font-family:var(--f-serif);font-size:calc(var(--u)*4.4);letter-spacing:.42em;text-indent:.42em;color:var(--gold);margin-top:calc(var(--u)*.6)}
+.cal-line{height:1px;margin:calc(var(--u)*4.4) calc(var(--u)*2) calc(var(--u)*3);background:linear-gradient(90deg,transparent,var(--line),transparent)}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);row-gap:calc(var(--u)*1.4)}
+.wd{font-family:var(--f-ar);font-weight:700;font-size:calc(var(--u)*3.8);color:var(--gold);opacity:.9;padding-bottom:calc(var(--u)*2)}
+.d{position:relative;height:calc(var(--u)*10.5);display:grid;place-items:center;font-family:var(--f-serif);font-weight:600;font-size:calc(var(--u)*5);color:rgba(251,238,219,.85)}
+.d.fri{color:rgba(232,211,180,.55)}
+.d.ev{color:#fff3df;font-weight:700}
+/* دائرة مرسومة باليد حول يوم الزفاف */
+.d.ev::before{content:'';position:absolute;width:calc(var(--u)*11);height:calc(var(--u)*10);
+  border:1.5px solid #e8d3b4;border-radius:52% 48% 55% 45% / 47% 55% 45% 53%;transform:rotate(-8deg);background:rgba(232,211,180,.14)}
+.d.ev::after{content:'';position:absolute;width:calc(var(--u)*12.4);height:calc(var(--u)*9);
+  border:1px solid rgba(232,211,180,.55);border-radius:48% 52% 46% 54% / 55% 45% 55% 45%;transform:rotate(7deg)}
+.d span{position:relative;z-index:1}
+.when{margin-top:calc(var(--u)*6);display:inline-flex;align-items:center;gap:10px;font-family:var(--f-ar);font-size:calc(var(--u)*5.8);color:var(--gold-hi)}
+.when svg{font-size:calc(var(--u)*5.6);color:var(--gold)}
+.loc{display:flex;flex-direction:column;align-items:center;margin-top:calc(var(--u)*7)}
+.pin{position:relative;width:calc(var(--u)*20);height:calc(var(--u)*20);border-radius:50%;display:grid;place-items:center;font-size:calc(var(--u)*8.5);color:var(--gold-hi);
+  background:rgba(58,18,20,.14);border:1px solid rgba(255,236,214,.4);transition:transform .3s}
+.pin::before,.pin::after{content:'';position:absolute;inset:0;border-radius:50%;border:1px solid rgba(255,236,214,.45);animation:pr 2.8s ease-out infinite}
+.pin::after{animation-delay:1.4s}
+@keyframes pr{from{transform:scale(1);opacity:.7}to{transform:scale(1.7);opacity:0}}
+.loc:active .pin{transform:scale(.94)}
+.loc .t{margin-top:calc(var(--u)*4);font-family:var(--f-ar);font-weight:700;font-size:calc(var(--u)*7.4);color:var(--gold-hi);line-height:1.5}
+.loc .h{margin-top:calc(var(--u)*1);font-size:calc(var(--u)*4.6);color:var(--gold);opacity:.92}
+.acts{margin-top:calc(var(--u)*8);display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--u)*2.4)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:calc(var(--u)*12);padding:0 calc(var(--u)*2);border-radius:999px;border:1px solid var(--line);background:rgba(58,18,20,.12);font-family:var(--f-ar);font-weight:700;font-size:calc(var(--u)*4.4);color:var(--gold-hi);transition:background .3s,transform .2s}
+.btn svg{font-size:1.25em}.btn:active{transform:scale(.96)}
+
+/* ---------- تأكيد الحضور: بطاقة رد ورقية (ورد من الأسفل) ---------- */
+.rsvp{padding-top:calc(var(--u)*2);padding-bottom:calc(var(--u)*56)}
+.rcard{position:relative;margin-top:calc(var(--u)*9);padding:calc(var(--u)*9) calc(var(--u)*7) calc(var(--u)*8);text-align:right;
+  background:
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/></svg>"),
+    #f4eadb;
+  background-blend-mode:multiply;color:var(--wine);transform:rotate(.6deg);border-radius:calc(var(--u)*.6);
+  box-shadow:0 calc(var(--u)*2) calc(var(--u)*5) rgba(30,6,8,.42),0 1px 2px rgba(30,6,8,.35)}
+.rcard::before{content:'';position:absolute;inset:calc(var(--u)*2);border:1px solid rgba(116,66,62,.35);pointer-events:none}
+.rcard .tape{top:calc(var(--u)*-3.4);left:50%;margin-left:calc(var(--u)*-11);transform:rotate(-2deg)}
+.field{margin-bottom:calc(var(--u)*6)}
+.field label{display:block;font-family:var(--f-ar);font-weight:700;font-size:calc(var(--u)*5.2);color:#6b3b37}
+.field label small{font-weight:400;opacity:.7}
+input,textarea{width:100%;font-family:var(--f-ar);font-size:calc(var(--u)*5.8);color:var(--wine);background:transparent;border:0;border-bottom:1.2px solid rgba(74,34,36,.5);border-radius:0;padding:calc(var(--u)*2.4) 0;outline:0;resize:none;direction:rtl;line-height:1.9}
+textarea{background:repeating-linear-gradient(180deg,transparent 0,transparent calc(var(--u)*11 - 1px),rgba(74,34,36,.28) calc(var(--u)*11 - 1px),rgba(74,34,36,.28) calc(var(--u)*11));line-height:calc(var(--u)*11);padding:0;border-bottom:0}
+input::placeholder,textarea::placeholder{color:rgba(74,34,36,.42)}
+input:focus{border-bottom-color:#74423e;border-bottom-width:2px}
+input.err{border-bottom-color:#b3392f}
+.send{width:100%;min-height:calc(var(--u)*13);margin-top:calc(var(--u)*2);border-radius:999px;display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  background:#6b3b37;color:#f3dfc0;font-family:var(--f-ar);font-weight:700;font-size:calc(var(--u)*5.4);box-shadow:inset 0 0 0 1px rgba(232,211,180,.5),0 calc(var(--u)*.8) calc(var(--u)*2) rgba(60,20,20,.35);transition:transform .2s,opacity .2s}
+.send:active{transform:scale(.97)}.send[disabled]{opacity:.7;pointer-events:none}
+.send svg{font-size:1.2em}
+.thanks{display:none;text-align:center;padding:calc(var(--u)*4) 0}
+.thanks svg{font-size:calc(var(--u)*11);color:#74423e}
+.thanks h3{font-family:var(--f-ar);font-weight:700;font-size:calc(var(--u)*9);margin:calc(var(--u)*3) 0 calc(var(--u)*2);color:#4a2224}
+.thanks p{font-size:calc(var(--u)*5.6);line-height:1.9;color:#6b3b37}
+.rsvp.done .form{display:none}.rsvp.done .thanks{display:block}
+.shint{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 18px);transform:translateX(-50%);z-index:25;display:flex;flex-direction:column;align-items:center;gap:2px;
+  font-family:var(--f-ar);font-weight:700;font-size:16px;color:var(--gold-hi);padding:8px 20px 6px;border-radius:999px;background:rgba(58,22,24,.82);border:1px solid rgba(232,211,180,.45);box-shadow:0 4px 14px rgba(30,6,8,.4);opacity:0;pointer-events:none;transition:opacity .7s}
+.shint.show{opacity:1}
+.shint svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(-3px);opacity:.55}50%{transform:translateY(4px);opacity:1}}
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 28px);transform:translate(-50%,20px);z-index:60;padding:12px 20px;border-radius:999px;background:rgba(40,12,14,.9);color:var(--gold-hi);font-family:var(--f-ar);font-size:15px;opacity:0;pointer-events:none;transition:.35s;white-space:nowrap}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01s!important}.rv{opacity:1;transform:none}}
+
+/* ================= SLIDE 1 : cover + envelope ================= */
+  .cover-panel{ background:#8b5350; }
+  .scene{
+    position:absolute; inset:0; z-index:0;
+    transform-origin:50% 38%;
+    transition:transform 1.25s cubic-bezier(.55,0,.25,1), opacity 1s ease, filter 1s ease;
+  }
+  .cover-panel.dive .scene{ transform:scale(1.85); opacity:0; filter:blur(6px); }
+  .scene img.base{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+
+  .hint{
+    position:absolute; left:50%; top:56%;
+    width:26%; aspect-ratio:1;
+    transform:translate(-50%,-50%);
+    background:radial-gradient(circle, rgba(255,255,255,.55) 0%, rgba(255,255,255,0) 68%);
+    z-index:4; pointer-events:none;
+    animation:pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse{ 0%,100%{ opacity:.25; transform:translate(-50%,-50%) scale(.85);} 50%{ opacity:.75; transform:translate(-50%,-50%) scale(1.12);} }
+
+  /* patch that hides the button baked into the image */
+  .btn-patch{
+    position:absolute;
+    left:10.6%; right:10.6%;
+    top:70.6%; bottom:14.5%;
+    z-index:4; pointer-events:none;
+    background:linear-gradient(174deg,#7e3d38 0%,#8a4942 52%,#914e46 100%);
+    -webkit-mask:radial-gradient(ellipse 50% 50% at 50% 50%, #000 65%, transparent 98%);
+    mask:radial-gradient(ellipse 50% 50% at 50% 50%, #000 65%, transparent 98%);
+  }
+  .noise::after, .btn-patch::after{
+    content:''; position:absolute; inset:0; pointer-events:none;
+    background:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/></svg>");
+    mix-blend-mode:overlay; opacity:.3;
+  }
+
+  .cta{
+    position:absolute;
+    left:50%; top:75.4%;
+    transform:translateX(-50%);
+    width:49%; height:5.3%;
+    z-index:6;
+    display:flex; align-items:center; justify-content:center; gap:3.5%;
+    border:1.5px solid rgba(248,240,230,.9);
+    border-radius:999px;
+    color:#f8f0e6;
+    font-family:var(--f-serif);
+    font-size:calc(var(--u)*2.85);
+    letter-spacing:.19em; text-indent:.19em;
+    white-space:nowrap;
+    overflow:hidden;
+    opacity:0;
+    animation:ctain .9s ease .9s forwards, ctapulse 3.4s ease-in-out 2s infinite;
+    transition:opacity .45s ease, transform .35s ease, background .35s ease, box-shadow .35s ease;
+  }
+  .cta .dash{ width:12px; height:1px; background:rgba(248,240,230,.9); flex:none; }
+  .cta::before{
+    content:''; position:absolute; top:-20%; bottom:-20%;
+    left:-70%; width:55%;
+    background:linear-gradient(100deg, transparent 0%, rgba(255,255,255,.6) 50%, transparent 100%);
+    transform:skewX(-18deg);
+    animation:sweep 3.4s ease-in-out 1.6s infinite;
+  }
+  @keyframes ctain{ from{ opacity:0; transform:translateX(-50%) translateY(14px);} to{ opacity:1; transform:translateX(-50%) translateY(0);} }
+  @keyframes sweep{ 0%{ left:-70%; } 55%,100%{ left:130%; } }
+  @keyframes ctapulse{ 0%,100%{ box-shadow:0 0 14px rgba(255,238,225,0); } 50%{ box-shadow:0 0 22px rgba(255,238,225,.3); } }
+  .cta:hover{ background:rgba(255,255,255,.08); transform:translateX(-50%) scale(1.05); box-shadow:0 0 26px rgba(255,238,225,.35); }
+  .cta:active{ transform:translateX(-50%) scale(.96); }
+  .cta:focus-visible{ outline:2px solid rgba(255,255,255,.8); outline-offset:4px; }
+  .open-zone{ position:absolute; left:11%; right:11%; top:42%; bottom:29%; z-index:5; }
+
+  /* floating petals */
+  .petals{ position:absolute; inset:0; z-index:7; pointer-events:none; overflow:hidden; }
+  .petal{
+    position:absolute; top:-8%;
+    width:3.2%; aspect-ratio:1/.8;
+    background:radial-gradient(circle at 35% 30%, #f6d9d6, #e2a9a4);
+    border-radius:60% 40% 55% 45%;
+    opacity:.55; filter:blur(.6px);
+    animation:fall linear infinite;
+  }
+  @keyframes fall{
+    0%{ transform:translateY(-10%) translateX(0) rotate(0deg); }
+    50%{ transform:translateY(55vh) translateX(4vw) rotate(180deg); }
+    100%{ transform:translateY(115vh) translateX(-2vw) rotate(360deg); }
+  }
+
+  /* ---- the envelope that really opens ----
+     the closed envelope is the picture itself; on click we lay 4 pieces on top of it:
+     lining (inside) · card · front of the envelope · the flap that turns over            */
+  .env{
+    --flap:polygon(13.815% 43.301%,13.815% 43.914%,36.964% 56.942%,42.279% 60.232%,48.883% 63.889%,50.160% 64.477%,52.156% 64.411%,54.387% 63.784%,57.617% 61.966%,60.821% 59.982%,64.006% 57.532%,74.618% 51.381%,85.258% 45.153%,86.397% 44.319%,86.397% 43.301%);
+    --body:polygon(14.134% 71.292%,86.079% 71.292%,86.079% 44.258%,85.016% 45.036%,74.389% 51.256%,63.762% 57.416%,60.574% 59.868%,57.386% 61.842%,54.198% 63.636%,52.072% 64.234%,50.266% 64.294%,49.097% 63.756%,42.508% 60.108%,37.194% 56.818%,14.134% 43.840%);
+    --inner:polygon(85.866% 43.600%,85.866% 71.172%,14.346% 71.172%,14.346% 43.600%);
+    --hinge:43.481%;
+    position:absolute; inset:0; z-index:5; pointer-events:none; display:none;
+  }
+  .cover-panel.opening .env{ display:block; }
+  .env > *{ position:absolute; inset:0; }
+  .lining{
+    background:
+      repeating-linear-gradient(45deg, rgba(255,255,255,.045) 0 2px, transparent 2px 9px),
+      linear-gradient(180deg,#8a4a46 0%,#a15e57 55%,#8c4944 100%);
+  }
+  .env-inner{ z-index:1; clip-path:var(--inner); }
+  .env-cardclip{display:none; z-index:3; clip-path:polygon(0 0,100% 0,100% 71.2%,0 71.2%); }
+  .env-card{
+    position:absolute; inset:auto; left:16.15%; top:20.33%; width:67.91%; height:47.3%;
+    border-radius:calc(var(--u)*.7);
+    background:url('theme.jpg') center/cover no-repeat, #7b3f3d;
+    box-shadow:0 calc(var(--u)*.6) calc(var(--u)*3) rgba(30,8,10,.45);
+    transform:translateY(95%);
+    display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
+    padding-top:calc(var(--u)*7.5);
+    color:var(--gold-hi); text-align:center;
+  }
+  .env-card::before{
+    content:''; position:absolute; inset:calc(var(--u)*1.6);
+    border:1px solid rgba(232,211,180,.5); border-radius:calc(var(--u)*.4);
+  }
+  .env-card .ec-names i{ font-style:normal; margin:0 .08em; }
+  .env-card .ec-names{ font-family:var(--f-script); font-size:calc(var(--u)*8.6); line-height:1.1; text-shadow:0 2px 14px rgba(40,10,12,.5); white-space:nowrap; }
+  .env-card .ec-date{ margin-top:calc(var(--u)*1.2); font-size:calc(var(--u)*2.3); letter-spacing:.34em; text-indent:.34em; text-transform:uppercase; color:var(--gold); }
+  .env-card .ec-orn{ margin-top:calc(var(--u)*2); font-size:calc(var(--u)*2.6); color:var(--gold); }
+  .env-body{ z-index:4; background:url('cover.png') 0 0/100% 100% no-repeat; clip-path:var(--body); }
+  .env-flap{ z-index:6; transform-origin:50% var(--hinge); transform-style:preserve-3d; }
+  .env-flap .face{
+    position:absolute; inset:0; clip-path:var(--flap);
+    transform-origin:50% var(--hinge);
+    -webkit-backface-visibility:hidden; backface-visibility:hidden;
+  }
+  .env-flap .front{ background:url('cover.png') 0 0/100% 100% no-repeat; }
+  .env-flap .back{ transform:rotateX(180deg); }
+
+  .cover-panel.opening .cta, .cover-panel.opening .open-zone{ pointer-events:none; }
+  .cover-panel.opening .cta{ animation:none; opacity:0; }
+  .cover-panel.opening .hint{ opacity:0; animation:none; transition:opacity .4s; }
+  .cover-panel.opening .env-flap{ animation:flap 1.05s cubic-bezier(.5,.05,.3,1) .15s both; }
+  .cover-panel.opening .env-card{ animation:cardUp 1.55s cubic-bezier(.22,.8,.3,1) .75s both; }
+  @keyframes flap{
+    0%{   transform:perspective(1700px) rotateX(0deg);   z-index:6; }
+    49%{  z-index:6; }
+    50%{  z-index:2; }
+    100%{ transform:perspective(1700px) rotateX(180deg); z-index:2; }
+  }
+  @keyframes cardUp{ from{ transform:translateY(95%); } to{ transform:translateY(0); } }
+
+  
+#cover{position:fixed;inset:0;z-index:50;display:grid;place-items:center;background:#8b5350;transition:opacity 1s ease,visibility 0s linear 1s}
+#cover.gone{opacity:0;visibility:hidden;pointer-events:none}
+.panel{--u:calc(var(--fw,450px)/100);position:relative;width:min(100vw,56.3vh);width:min(100vw,56.3dvh);height:100vh;height:100dvh;overflow:hidden;background:#8b5350}
+
+
+</style>
+</head>
+<body>
+<div class="backdrop" aria-hidden="true"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="gf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d6b583"/><stop offset=".42" stop-color="#fff1da"/><stop offset=".62" stop-color="#e3c593"/><stop offset="1" stop-color="#c7a06b"/></linearGradient>
+  </defs>
+  <symbol id="i-orn" viewBox="0 0 24 24"><path d="M12 1.5l2.4 2.4L12 6.3 9.6 3.9zM12 17.7l2.4 2.4L12 22.5l-2.4-2.4zM1.5 12l2.4-2.4L6.3 12l-2.4 2.4zM17.7 12l2.4-2.4 2.4 2.4-2.4 2.4zM12 8.6l3.4 3.4-3.4 3.4L8.6 12z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21.5s-7-5.7-7-11.3a7 7 0 1 1 14 0c0 5.6-7 11.3-7 11.3z"/><circle cx="12" cy="10.2" r="2.7"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6.8V12l3.4 2.1"/></symbol>
+  <symbol id="i-calplus" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2.6"/><path d="M3.5 10h17M8 3v3.6M16 3v3.6M12 12.6v5M9.5 15.1h5"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="11.5" height="11.5" rx="2.4"/><path d="M15.5 8.5V6.4a2.4 2.4 0 0 0-2.4-2.4H6.4A2.4 2.4 0 0 0 4 6.4v6.7a2.4 2.4 0 0 0 2.4 2.4h2.1"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.8S3.5 15.7 3.5 9.6A4.7 4.7 0 0 1 12 7a4.7 4.7 0 0 1 8.5 2.6c0 6.1-8.5 11.2-8.5 11.2z"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="M21 3L10.2 13.8M21 3l-6.6 18-4.2-7.2L3 9.6z"/></symbol>
+  <symbol id="i-vol" viewBox="0 0 24 24"><path d="M4 9.5v5h3.6l4.9 4V5.5l-4.9 4z"/><path d="M16 9a4.2 4.2 0 0 1 0 6M18.6 6.5a8 8 0 0 1 0 11"/></symbol>
+  <symbol id="i-mute" viewBox="0 0 24 24"><path d="M4 9.5v5h3.6l4.9 4V5.5l-4.9 4z"/><path d="M16.5 9.5l5 5M21.5 9.5l-5 5"/></symbol>
+</svg>
+<audio id="bgm" src="music.mp3" loop preload="auto"></audio>
+
+<button class="snd" id="snd" aria-label="الموسيقى">
+  <svg class="i on"><use href="#i-vol"/></svg><svg class="i off"><use href="#i-mute"/></svg>
+</button>
+
+<div class="shint" id="shint" aria-hidden="true"><span>انزل لأسفل</span><svg viewBox="0 0 24 24"><path d="M6 9.5l6 6 6-6"/></svg></div>
+
+<main id="scroll">
+ <div class="page" id="page">
+  <!-- الورد: أعلى الصفحة الأولى + أسفل الصفحة الأخيرة، وما بينهما ورق متصل -->
+  <img class="roses top" src="roses-top.webp" alt="" aria-hidden="true">
+  <img class="roses bottom" src="roses-bottom.webp" alt="" aria-hidden="true">
+
+  <!-- 1) الصفحة الأولى -->
+  <section class="hero">
+
+    <img class="names-img rv" src="names.png" alt="hajer &amp; abdulaah" style="--d:.55s">
+    <div class="en-date rv" dir="ltr" style="--d:.7s">2 NOVEMBER 2026</div>
+
+    <div class="vcard rv" id="vcard" style="--d:.85s">
+      <span class="tape l"></span><span class="tape r"></span>
+      <div class="scr"><video id="vid" src="download.mp4" poster="photo.png" muted loop playsinline preload="auto"></video></div>
+    </div>
+  </section>
+
+  <!-- العداد -->
+  <section class="cdwrap">
+    <div class="cdt foil rv">العدّ التنازلي لحفل الزفاف</div>
+    <div class="cd rv" style="--d:.2s">
+      <div class="cell"><span class="n foil" id="cd-d">00</span><span class="l">يوم</span></div>
+      <div class="cell"><span class="n foil" id="cd-h">00</span><span class="l">ساعة</span></div>
+      <div class="cell"><span class="n foil" id="cd-m">00</span><span class="l">دقيقة</span></div>
+      <div class="cell"><span class="n foil" id="cd-s">00</span><span class="l">ثانية</span></div>
+    </div>
+  </section>
+
+  <!-- نص الدعوة -->
+  <section class="inv">
+    <div class="dua foil rv">بارك الله لهما وبارك عليهما<br>وجمع بينهما في خير</div>
+    <div class="divider rv"><i></i><svg class="i"><use href="#i-orn"/></svg><i></i></div>
+    <div class="phrase rv">وحين تكتمل الفرحة بمن نحب،<br>يطيب لنا أن نتقاسمها معكم</div>
+    <div class="host rv"><span class="pre">تتشرف</span>
+      <b class="n1">مريم ابوعبدالله</b>
+      <span class="hr"><i></i><em>حرم</em><i></i></span>
+      <b class="n1">جمال الفردغ</b>
+      <small>بدعوتكم لحفل زفاف ابنتها</small></div>
+    <div class="bride foil rv">م. هاجر</div>
+    <div class="divider rv"><i></i><svg class="i"><use href="#i-orn"/></svg><i></i></div>
+    <div class="closing rv">فحضوركم يزيد فرحتنا فرحاً،<br>ودعاؤكم يملأ ليلتنا بركةً ونوراً</div>
+    <div class="insh rv">وذلك بمشيئة الله تعالى</div>
+  </section>
+
+  <!-- الموعد والمكان -->
+  <section class="det">
+    <div class="h2 foil rv">الموعد والمكان</div>
+    <div class="sub rv" style="--d:.1s">ننتظركم لتشاركونا فرحتنا</div>
+
+    <div class="cal rv" style="--d:.1s">
+      <div class="cal-m foil" id="calM"></div>
+      <div class="cal-y num" id="calY"></div>
+      <div class="cal-line"></div>
+      <div class="cal-grid" id="calGrid"></div>
+    </div>
+
+    <div class="when rv"><svg class="i"><use href="#i-clock"/></svg>يبدأ الحفل الساعة 7:00 مساءً</div>
+
+    <a class="loc rv" id="venue" href="https://maps.app.goo.gl/hHVfkKvivUJSKJG4A?g_st=ic" target="_blank" rel="noopener" aria-label="فتح الموقع على الخريطة">
+      <span class="pin"><svg class="i"><use href="#i-pin"/></svg></span>
+      <span class="t">قاعة حلا - طريق السراج</span>
+      <span class="h">اضغط على الأيقونة لفتح الموقع</span>
+    </a>
+
+    <div class="acts rv">
+      <button class="btn" id="calBtn"><svg class="i"><use href="#i-calplus"/></svg>أضف للتقويم</button>
+      <button class="btn" id="copyBtn"><svg class="i"><use href="#i-copy"/></svg>نسخ العنوان</button>
+    </div>
+  </section>
+
+  <!-- تأكيد الحضور (الاسم + الرسالة فقط) -->
+  <section class="rsvp" id="rsvpBox">
+    <div class="h2 foil rv">تأكيد الحضور</div>
+    <div class="sub rv" style="--d:.1s">يسعدنا تأكيدكم حتى نُجهّز لكم مكانكم</div>
+    <div class="rcard rv" style="--d:.15s">
+      <span class="tape"></span>
+      <form class="form" id="rsvpForm" autocomplete="off" novalidate>
+        <div class="field"><label for="rsvpName">الاسم</label><input id="rsvpName" type="text" placeholder="اكتب اسمك هنا" autocomplete="name"></div>
+        <div class="field"><label for="rsvpMsg">رسالة للعروس <small>(اختياري)</small></label><textarea id="rsvpMsg" rows="3" placeholder="اكتب كلمة طيبة للعروس..."></textarea></div>
+        <button type="submit" class="send" id="sendBtn"><svg class="i"><use href="#i-send"/></svg><span id="sendTxt">إرسال</span></button>
+      </form>
+      <div class="thanks" id="thanks" role="status"><svg class="i"><use href="#i-heart"/></svg><h3>وصلتنا رسالتك</h3><p id="thanksTxt"></p></div>
+    </div>
+    <img class="names-img sm rv" src="names.png" alt="hajer &amp; abdulaah">
+  </section>
+ </div>
+</main>
+
+<div id="cover">
+      <div class="panel cover-panel" id="coverPanel">
+        <div class="scene">
+          <img class="base" src="cover.png" alt="You are invited">
+          <div class="hint" aria-hidden="true"></div>
+          <div class="btn-patch" aria-hidden="true"></div>
+
+          <!-- the 4 pieces of the opening envelope -->
+          <div class="env" aria-hidden="true">
+            <div class="env-inner lining noise"></div>
+            <div class="env-body"></div>
+            <div class="env-flap">
+              <div class="face front"></div>
+              <div class="face back lining"></div>
+            </div>
+          </div>
+
+          <button class="cta" id="ctaBtn" aria-label="Open the invitation">
+            <span class="dash"></span>CLICK TO OPEN<span class="dash"></span>
+          </button>
+          <div class="petals" aria-hidden="true">
+            <span class="petal" style="left:8%;  animation-duration:11s; animation-delay:0s;"></span>
+            <span class="petal" style="left:24%; animation-duration:14s; animation-delay:2.5s; width:2.4%;"></span>
+            <span class="petal" style="left:41%; animation-duration:12s; animation-delay:5s;"></span>
+            <span class="petal" style="left:58%; animation-duration:15s; animation-delay:1.2s; width:2.7%;"></span>
+            <span class="petal" style="left:73%; animation-duration:13s; animation-delay:4s;"></span>
+            <span class="petal" style="left:88%; animation-duration:16s; animation-delay:6.5s; width:2.2%;"></span>
+          </div>
+          <button class="open-zone" id="openBtn" aria-label="Open the invitation"></button>
+        </div>
+      </div>
+    </div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* ===== إعدادات الدعوة — عدّلوا هنا فقط ===== */
+var RSVP_EMAIL = 'hajerjeje2000@icloud.com';   /* البريد الذي تصل إليه الردود */
+var MAP_URL = 'https://maps.app.goo.gl/hHVfkKvivUJSKJG4A?g_st=ic';
+var EVENT = { start:new Date(2026,10,2,19,0,0), end:new Date(2026,10,2,22,0,0), title:'زفاف م. هاجر', place:'قاعة حلا - طريق السراج' };
+/* ========================================= */
+var $=function(id){return document.getElementById(id)};
+var coverPanel=$('coverPanel'), bgm=$('bgm'), vid=$('vid'), snd=$('snd'), scroller=$('scroll');
+function p2(n){return (n<10?'0':'')+n}
+
+/* حجم الغلاف */
+function fit(){coverPanel.style.setProperty('--fw',coverPanel.getBoundingClientRect().width+'px')}
+addEventListener('resize',fit);addEventListener('orientationchange',fit);fit();
+
+/* الكشف التدريجي أثناء التمرير */
+var io=null;
+function startReveal(){
+  var els=document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+  io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{root:scroller,threshold:.15});
+  els.forEach(function(e){io.observe(e)});
+}
+
+
+/* تلميح التمرير */
+var shint=$('shint');
+scroller.addEventListener('scroll',function(){if(scroller.scrollTop>50)shint.classList.remove('show')},{passive:true});
+
+/* الموسيقى */
+var musicOn=true,fadeT=null;
+function fadeTo(v,ms,done){clearInterval(fadeT);var f=bgm.volume,t0=Date.now();fadeT=setInterval(function(){var k=Math.min(1,(Date.now()-t0)/ms);bgm.volume=Math.max(0,Math.min(1,f+(v-f)*k));if(k>=1){clearInterval(fadeT);if(done)done()}},40)}
+function musicPlay(){try{bgm.volume=0;var p=bgm.play();if(p&&p.then)p.then(function(){snd.classList.remove('muted');fadeTo(.9,1800)},function(){snd.classList.add('muted')})}catch(e){}}
+snd.addEventListener('click',function(){
+  if(!bgm.paused){musicOn=false;snd.classList.add('muted');fadeTo(0,400,function(){bgm.pause()})}
+  else{musicOn=true;musicPlay()}
+});
+
+/* فتح الظرف */
+var opening=false;
+function openEnvelope(){
+  if(opening)return;opening=true;
+  musicPlay();
+  coverPanel.classList.add('opening');
+  setTimeout(function(){coverPanel.classList.add('dive')},1250);
+  setTimeout(function(){
+    $('cover').classList.add('gone');
+    scroller.classList.add('on');
+    snd.classList.add('show');
+    vid.play().catch(function(){});
+    startReveal();
+    setTimeout(function(){if(scroller.scrollTop<50)shint.classList.add('show')},1500);
+  },2050);
+}
+$('ctaBtn').addEventListener('click',openEnvelope);
+$('openBtn').addEventListener('click',openEnvelope);
+if(/[?&]open=1/.test(location.search))setTimeout(openEnvelope,700);
+document.addEventListener('visibilitychange',function(){if(document.hidden){bgm.pause()}else if(opening&&musicOn&&scroller.classList.contains('on')){musicPlay()}});
+
+/* التقويم */
+(function(){
+  var AR_M=['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+  var WD=['سبت','أحد','اثنين','ثلاثاء','أربعاء','خميس','جمعة'];
+  var y=EVENT.start.getFullYear(),m=EVENT.start.getMonth(),d=EVENT.start.getDate();
+  $('calM').textContent=AR_M[m];$('calY').textContent=y;
+  var h='';WD.forEach(function(w){h+='<div class="wd">'+w+'</div>'});
+  var off=(new Date(y,m,1).getDay()+1)%7;
+  for(var i=0;i<off;i++)h+='<div class="d"></div>';
+  var days=new Date(y,m+1,0).getDate();
+  for(var n=1;n<=days;n++){var dow=(off+n-1)%7;h+='<div class="d'+(dow===6?' fri':'')+(n===d?' ev':'')+'"><span>'+n+'</span></div>'}
+  $('calGrid').innerHTML=h;
+})();
+
+/* العد التنازلي */
+function tick(){
+  var diff=Math.max(0,EVENT.start-new Date());
+  var D=Math.floor(diff/864e5),H=Math.floor(diff%864e5/36e5);
+  $('cd-d').textContent=p2(D);$('cd-h').textContent=p2(H);
+  $('cd-m').textContent=p2(Math.floor(diff%36e5/6e4));$('cd-s').textContent=p2(Math.floor(diff%6e4/1e3));
+}
+tick();setInterval(tick,1000);
+
+/* أدوات */
+var toastEl=$('toast'),toastT=null;
+function showToast(t){toastEl.textContent=t;toastEl.classList.add('on');clearTimeout(toastT);toastT=setTimeout(function(){toastEl.classList.remove('on')},2800)}
+function copyText(txt,ok,fail){
+  function fb(){var ta=document.createElement('textarea');ta.value=txt;ta.style.cssText='position:fixed;opacity:0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');showToast(ok)}catch(e){showToast(fail)}ta.remove()}
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(txt).then(function(){showToast(ok)},fb);else fb();
+}
+$('copyBtn').addEventListener('click',function(){copyText(EVENT.place,'تم نسخ العنوان ✓','تعذّر النسخ، انسخ يدوياً')});
+$('calBtn').addEventListener('click',function(){
+  var f=function(d){return d.getFullYear()+p2(d.getMonth()+1)+p2(d.getDate())+'T'+p2(d.getHours())+p2(d.getMinutes())+'00'};
+  var ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//hajer-wedding//AR','CALSCALE:GREGORIAN','BEGIN:VEVENT','UID:'+Date.now()+'@hajer-wedding','DTSTAMP:'+f(new Date()),'DTSTART:'+f(EVENT.start),'DTEND:'+f(EVENT.end),'SUMMARY:'+EVENT.title,'LOCATION:'+EVENT.place,'DESCRIPTION:دعوة حضور حفل زفاف م. هاجر\\n'+MAP_URL,'BEGIN:VALARM','TRIGGER:-P1D','ACTION:DISPLAY','DESCRIPTION:غداً حفل زفاف م. هاجر','END:VALARM','END:VEVENT','END:VCALENDAR'].join('\r\n');
+  var a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+ics],{type:'text/calendar;charset=utf-8'}));a.download='hajer-wedding.ics';
+  document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(a.href)},3000);
+  showToast('تم تنزيل الموعد — افتحه ليُضاف إلى التقويم');
+});
+
+/* تأكيد الحضور: الاسم + الرسالة → البريد الإلكتروني */
+var rsvpName=$('rsvpName'),rsvpMsg=$('rsvpMsg'),sendBtn=$('sendBtn');
+rsvpName.addEventListener('input',function(){rsvpName.classList.remove('err')});
+function finish(name){
+  $('thanksTxt').textContent='شكراً لك يا '+name+'، وصلتنا رسالتك ونسأل الله أن يجمعنا بكم على الخير';
+  $('rsvpBox').classList.add('done');
+}
+$('rsvpForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  var name=rsvpName.value.trim(),msg=rsvpMsg.value.trim();
+  if(!name){rsvpName.classList.add('err');rsvpName.focus();return}
+  sendBtn.disabled=true;$('sendTxt').textContent='جارٍ الإرسال…';
+  var payload={'الاسم':name,'الرسالة':msg||'—','_subject':'تأكيد حضور — '+name,'_template':'table','_captcha':'false'};
+  fetch('https://formsubmit.co/ajax/'+RSVP_EMAIL,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(payload)})
+    .then(function(r){return r.json()})
+    .then(function(d){
+      if(d&&(d.success===true||d.success==='true')){finish(name)}
+      else throw new Error('send');
+    })
+    .catch(function(){
+      /* احتياطي: فتح تطبيق البريد برسالة جاهزة */
+      sendBtn.disabled=false;$('sendTxt').textContent='إرسال';
+      showToast('تعذّر الإرسال، سيُفتح البريد لإرسالها يدوياً');
+      setTimeout(function(){location.href='mailto:'+RSVP_EMAIL+'?subject='+encodeURIComponent('تأكيد حضور — '+name)+'&body='+encodeURIComponent('الاسم: '+name+'\n\nالرسالة: '+(msg||'—'))},1200);
+    });
+});
+
+</script>
+</body>
+</html>
